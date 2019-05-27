@@ -10,8 +10,9 @@ namespace OtelRezervasyon_DadasTurizm.DadasDB
     {
      
         public DadasDBEntities()
-            : base("server=DESKTOP-GOE244N\\SQLEXPRESS02; database=DadasOtelDB;Trusted_Connection=true")
+            : base("server=DESKTOP-GOE244N\\SQLEXPRESS02; database=DadasOtelDB;Trusted_Connection=true;MultipleActiveResultSets=True")
         {
+            Database.SetInitializer(new MigrateDatabaseToLatestVersion<DadasDBEntities, OtelRezervasyon_DadasTurizm.Migrations.Configuration>());
         }
         public virtual DbSet<BookDetail> BookDetails { get; set; }
         public virtual DbSet<Book> Books { get; set; }
@@ -23,6 +24,9 @@ namespace OtelRezervasyon_DadasTurizm.DadasDB
 
         protected override void OnModelCreating(DbModelBuilder modelBuilder)
         {
+            modelBuilder.Entity<Room>()
+            .Property(f => f.RoomNumber)
+            .HasDatabaseGeneratedOption(System.ComponentModel.DataAnnotations.Schema.DatabaseGeneratedOption.None);
 
             modelBuilder.Configurations.Add(new BookDetailMapping());
             modelBuilder.Configurations.Add(new BookMapping());

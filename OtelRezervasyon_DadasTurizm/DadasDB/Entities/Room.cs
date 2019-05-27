@@ -13,10 +13,9 @@ namespace OtelRezervasyon_DadasTurizm.DadasDB.Entities
         {
             this.BookDetails = new HashSet<BookDetail>();
         }
-
         [Key]
         public int RoomNumber { get; set; }
-        public byte RoomTypeID { get; set; }
+        public int RoomTypeID { get; set; }
 
 
         public virtual ICollection<BookDetail> BookDetails { get; set; }

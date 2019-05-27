@@ -1,4 +1,4 @@
-namespace OtelRezervasyon_DadasTurizm.Migrations
+﻿namespace OtelRezervasyon_DadasTurizm.Migrations
 {
     using OtelRezervasyon_DadasTurizm.DadasDB.Entities;
     using System;
@@ -11,37 +11,42 @@ namespace OtelRezervasyon_DadasTurizm.Migrations
         public Configuration()
         {
             AutomaticMigrationsEnabled = true;
-            ContextKey = "OtelRezervasyon_DadasTurizm.DadasDB.DadasDBEntities";
         }
 
-        protected override void Seed(OtelRezervasyon_DadasTurizm.DadasDB.DadasDBEntities context)
+        protected override void Seed(DadasDB.DadasDBEntities context)
         {
-            context.Users.AddOrUpdate(x => x.UserID, new User() { UserName = "fatih", UserPassword = "fatih123" });
-            context.Users.AddOrUpdate(x => x.UserID, new User() { UserName = "hilal", UserPassword = "hilal123" });
-            context.Users.AddOrUpdate(x => x.UserID, new User() { UserName = "�mer", UserPassword = "�mer123" });
-
-            context.RoomDetails.AddOrUpdate(x=>x.RoomTypeID, new RoomDetail() { RoomTypeID = 1, RoomTypeDetails = "Standart", RoomCapacity=2, RoomPrice=125 });
-            context.RoomDetails.AddOrUpdate(x=>x.RoomTypeID, new RoomDetail() { RoomTypeID = 2, RoomTypeDetails = "Deluxe", RoomCapacity=2, RoomPrice=250 });
-            context.RoomDetails.AddOrUpdate(x=>x.RoomTypeID, new RoomDetail() { RoomTypeID = 3, RoomTypeDetails = "FamilySuit", RoomCapacity=4, RoomPrice=400});
-            context.RoomDetails.AddOrUpdate(x=>x.RoomTypeID, new RoomDetail() { RoomTypeID = 4, RoomTypeDetails = "KingSuit", RoomCapacity=4, RoomPrice=800 });
-
-            context.Rooms.AddOrUpdate(x=>x.RoomNumber,new Room() { RoomNumber = 101, RoomTypeID =  1 });
-            context.Rooms.AddOrUpdate(x=>x.RoomNumber,new Room() { RoomNumber = 102, RoomTypeID = 1 });
-            context.Rooms.AddOrUpdate(x=>x.RoomNumber,new Room() { RoomNumber = 103, RoomTypeID = 1 });
-            context.Rooms.AddOrUpdate(x=>x.RoomNumber,new Room() { RoomNumber = 104, RoomTypeID = 1 });
-            context.Rooms.AddOrUpdate(x=>x.RoomNumber,new Room() { RoomNumber = 105, RoomTypeID = 2 });
-            context.Rooms.AddOrUpdate(x=>x.RoomNumber,new Room() { RoomNumber = 106, RoomTypeID = 2 });
-            context.Rooms.AddOrUpdate(x=>x.RoomNumber,new Room() { RoomNumber = 201, RoomTypeID = 3 });
-            context.Rooms.AddOrUpdate(x=>x.RoomNumber,new Room() { RoomNumber = 202, RoomTypeID = 3 });
-            context.Rooms.AddOrUpdate(x=>x.RoomNumber,new Room() { RoomNumber = 203, RoomTypeID = 3 });
-            context.Rooms.AddOrUpdate(x=>x.RoomNumber,new Room() { RoomNumber = 204, RoomTypeID = 3 });
-            context.Rooms.AddOrUpdate(x=>x.RoomNumber,new Room() { RoomNumber = 205, RoomTypeID = 3 });
-            context.Rooms.AddOrUpdate(x=>x.RoomNumber,new Room() { RoomNumber = 206, RoomTypeID = 3 });
-            context.Rooms.AddOrUpdate(x=>x.RoomNumber,new Room() { RoomNumber = 301, RoomTypeID = 4 });
-            context.Rooms.AddOrUpdate(x=>x.RoomNumber,new Room() { RoomNumber = 302, RoomTypeID = 4 });
-            context.Rooms.AddOrUpdate(x=>x.RoomNumber,new Room() { RoomNumber = 303, RoomTypeID = 4 });
+            context.Users.AddOrUpdate(x => x.UserID, new User { UserName = "asd", UserPassword = "asd" });
+            context.Users.AddOrUpdate(x => x.UserID, new User { UserName = "ömer", UserPassword = "ömer123" });
+            context.Users.AddOrUpdate(x => x.UserID, new User { UserName = "hilal", UserPassword = "hilal123" });
 
 
+            context.RoomDetails.AddOrUpdate(x => x.RoomTypeID, new RoomDetail { RoomTypeDetails = "Standart", RoomCapacity = 2, RoomDescription = "2 kişilik Standart oda", RoomPrice = 125 });
+            context.RoomDetails.AddOrUpdate(x => x.RoomTypeID, new RoomDetail { RoomTypeDetails = "Deluxe", RoomCapacity = 2, RoomDescription = "2 kişilik Deluxe oda", RoomPrice = 250 });
+            context.RoomDetails.AddOrUpdate(x => x.RoomTypeID, new RoomDetail { RoomTypeDetails = "FamilySuit", RoomCapacity = 4, RoomDescription = "4 kişilik Family Suit", RoomPrice = 400 });
+            context.RoomDetails.AddOrUpdate(x => x.RoomTypeID, new RoomDetail { RoomTypeDetails = "KingSuit", RoomCapacity = 4, RoomDescription = "4 kişilik King Suit", RoomPrice = 800 });
+
+            context.SaveChanges();
+
+            RoomDetail Standart = context.RoomDetails.FirstOrDefault(r => r.RoomTypeDetails == "Standart");
+            RoomDetail Deluxe = context.RoomDetails.FirstOrDefault(r => r.RoomTypeDetails == "Deluxe");
+            RoomDetail FamilySuit = context.RoomDetails.FirstOrDefault(r => r.RoomTypeDetails == "FamilySuit");
+            RoomDetail KingSuit = context.RoomDetails.FirstOrDefault(r => r.RoomTypeDetails == "KingSuit");
+
+            context.Rooms.AddOrUpdate(x=>x.RoomNumber, new Room {  RoomTypeID = Standart.RoomTypeID });
+            context.Rooms.AddOrUpdate(x=>x.RoomNumber, new Room {  RoomTypeID = Standart.RoomTypeID });
+            context.Rooms.AddOrUpdate(x=>x.RoomNumber, new Room {  RoomTypeID = Standart.RoomTypeID });
+            context.Rooms.AddOrUpdate(x=>x.RoomNumber, new Room {  RoomTypeID = Standart.RoomTypeID });
+            context.Rooms.AddOrUpdate(x=>x.RoomNumber, new Room {  RoomTypeID = Deluxe.RoomTypeID });
+            context.Rooms.AddOrUpdate(x=>x.RoomNumber, new Room {  RoomTypeID = Deluxe.RoomTypeID });
+            context.Rooms.AddOrUpdate(x=>x.RoomNumber, new Room {  RoomTypeID = FamilySuit.RoomTypeID });
+            context.Rooms.AddOrUpdate(x=>x.RoomNumber, new Room {  RoomTypeID = FamilySuit.RoomTypeID });
+            context.Rooms.AddOrUpdate(x=>x.RoomNumber, new Room {  RoomTypeID = FamilySuit.RoomTypeID });
+            context.Rooms.AddOrUpdate(x=>x.RoomNumber, new Room {  RoomTypeID = FamilySuit.RoomTypeID });
+            context.Rooms.AddOrUpdate(x=>x.RoomNumber, new Room {  RoomTypeID = FamilySuit.RoomTypeID });
+            context.Rooms.AddOrUpdate(x=>x.RoomNumber, new Room {  RoomTypeID = FamilySuit.RoomTypeID });
+            context.Rooms.AddOrUpdate(x=>x.RoomNumber, new Room {  RoomTypeID = KingSuit.RoomTypeID });
+            context.Rooms.AddOrUpdate(x=>x.RoomNumber, new Room {  RoomTypeID = KingSuit.RoomTypeID });
+            context.Rooms.AddOrUpdate(x => x.RoomNumber, new Room { RoomTypeID = KingSuit.RoomTypeID });
 
         }
     }
