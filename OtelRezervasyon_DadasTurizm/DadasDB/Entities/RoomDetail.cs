@@ -7,7 +7,7 @@ using System.Threading.Tasks;
 
 namespace OtelRezervasyon_DadasTurizm.DadasDB.Entities
 {
-    public class RoomDetail
+    public partial class RoomDetail
     {
         public RoomDetail()
         {
@@ -15,7 +15,8 @@ namespace OtelRezervasyon_DadasTurizm.DadasDB.Entities
         }
 
         [Key]
-        public byte RoomTypeID { get; set; }
+        public int RoomTypeID { get; set; }
+
         public string RoomTypeDetails { get; set; }
         public string RoomDescription { get; set; }
         public byte? RoomCapacity { get; set; }

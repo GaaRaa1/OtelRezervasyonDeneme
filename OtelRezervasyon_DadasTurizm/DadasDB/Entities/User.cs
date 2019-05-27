@@ -7,7 +7,7 @@ using System.Threading.Tasks;
 
 namespace OtelRezervasyon_DadasTurizm.DadasDB.Entities
 {
-    public class User
+    public partial class User
     {
         [Key]
         public int UserID { get; set; }
