@@ -122,6 +122,11 @@
     <Compile Include="FormUserInformation.Designer.cs">
       <DependentUpon>FormUserInformation.cs</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\201905292337164_UniDB Schema.cs" />
+    <Compile Include="Migrations\201905292337164_UniDB Schema.Designer.cs">
+      <DependentUpon>201905292337164_UniDB Schema.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\CheckAndMigrateDatabaseToLatestVersion.cs" />
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
@@ -153,6 +158,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="FormUserInformation.resx">
       <DependentUpon>FormUserInformation.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201905292337164_UniDB Schema.resx">
+      <DependentUpon>201905292337164_UniDB Schema.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Properties\Resources.resx">
       <Generator>ResXFileCodeGenerator</Generator>

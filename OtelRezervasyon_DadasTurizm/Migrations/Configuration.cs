@@ -1,17 +1,19 @@
 ﻿namespace OtelRezervasyon_DadasTurizm.Migrations
 {
+    using OtelRezervasyon_DadasTurizm.DadasDB;
     using OtelRezervasyon_DadasTurizm.DadasDB.Entities;
     using System;
     using System.Data.Entity;
     using System.Data.Entity.Migrations;
     using System.Linq;
 
-    internal sealed class Configuration : DbMigrationsConfiguration<OtelRezervasyon_DadasTurizm.DadasDB.DadasDBEntities>
+    internal sealed class Configuration : DbMigrationsConfiguration<DadasDB.DadasDBEntities>
     {
         public Configuration()
         {
             AutomaticMigrationsEnabled = true;
-        }
+            AutomaticMigrationDataLossAllowed = true;
+        }        
 
         protected override void Seed(DadasDB.DadasDBEntities context)
         {
